@@ -1,0 +1,4 @@
+Fond Secondaire	Deep Abyss	#002B2E	Un bleu-vert presque noir pour les sections.
+Couleur de Base	Classic Teal	#008080	La couleur d'équilibre pour ton identité.
+Accent Principal	Electric Cyan	#00F5FF	Idéal pour les boutons (CTA) et le texte important.
+Soft Highlight	Muted Mint	#7FFFD4	Pour les hovers (survol) ou les icônes secondaires.
