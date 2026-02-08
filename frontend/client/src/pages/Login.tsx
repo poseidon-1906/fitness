@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Bg from "../assets/images/signBg.jpg";
 
 const Login = () => {
-  const [state, setState] = useState('login'); // Changé à 'login' par défaut pour correspondre à la logique
+  const [state, setState] = useState('login');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

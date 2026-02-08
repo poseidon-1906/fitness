@@ -1,35 +1,23 @@
-import React from 'react';
 
-interface InputProps {
+import { type InputHTMLAttributes } from 'react'
+
+interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
     label?: string;
-    type?: React.HTMLInputTypeAttribute;
-    value: string | number;
     onChange: (value: string | number) => void;
-    placeholder?: string;
-    className?: string;
-    required?: boolean;
-    min?: string | number;
-    max?: string | number;
 }
 
-export default function Input({ label, type = 'text', value, onChange, placeholder = '', className = '', required = false, min, max }: InputProps) {
-    return (
-        <div className={`space-y-2 ${className}`}>
-            {label && (
-                <label className='block text-sm font-medium text-slate-700 dark:text-slate-300'>
-                    {label}
-                    {required && <span className='text-red-500 ml-1'>*</span>}
-                </label>
-            )}
-            <input
-                type={type}
-                value={value}
-                onChange={(e) => onChange(type === 'number' ? parseFloat(e.target.value) : e.target.value)}
-                placeholder={placeholder}
-                min={min}
-                max={max}
-                className='w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200'
-            />
-        </div>
-    );
+const Input = ({ label, onChange, type, ...props}: InputProps) => {
+  return (
+    <div className='relative'>
+        {label && <label className='absolute -top-3 left-4 text-sm text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-800 px-1'>{label}</label>}
+        <input 
+            {...props}
+            type={type}
+            onChange={(e) => onChange(type === 'number' ? parseFloat(e.target.value) || 0 : e.target.value)}
+            className='w-full px-4 py-3 bg-[#F4F4F5] dark:bg-zinc-900 border-2 border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-shadow duration-300'
+        />
+    </div>
+  )
 }
+
+export default Input
